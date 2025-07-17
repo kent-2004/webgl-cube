@@ -1,9 +1,6 @@
 const canvas = document.querySelector("canvas");
 const gl = canvas.getContext("webgl2");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
 function mat4() {
 	return new Float32Array([
 		1, 0, 0, 0,
@@ -333,8 +330,7 @@ const indexBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)
 
-console.log(window.innerWidth)
-const projection = perspective(75 * (Math.PI / 180.0), canvas.width / canvas.height, 0.1, 500.0);
+const projection = perspective(75 * (Math.PI / 180.0), window.innerWidth / window.innerHeight, 0.1, 500.0);
 const view = lookAt([3, 3, -3], [0, 0, 0], [0, 1, 0]);
 const model = mat4();
 
